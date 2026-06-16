@@ -1,0 +1,83 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite the following works."
+title: "Domain Adaptation Benchmark: Test-Time Adaptation for Distribution Shift"
+version: "1.0.0"
+date-released: "2024-01-01"
+url: "https://github.com/adnaan512/domain-adaptation-benchmark"
+authors:
+  - family-names: "Hassnain"
+    given-names: "Adnan"
+    affiliation: "NUST Pakistan"
+
+references:
+  - type: article
+    title: "Benchmarking Neural Network Robustness to Common Corruptions and Perturbations"
+    authors:
+      - family-names: "Hendrycks"
+        given-names: "Dan"
+      - family-names: "Dietterich"
+        given-names: "Thomas"
+    year: 2019
+    journal: "International Conference on Learning Representations (ICLR)"
+    url: "https://arxiv.org/abs/1903.12261"
+    notes: "Introduces CIFAR-10-C, the 15-corruption benchmark dataset used in this project."
+
+  - type: article
+    title: "Tent: Fully Test-Time Adaptation by Entropy Minimization"
+    authors:
+      - family-names: "Wang"
+        given-names: "Dequan"
+      - family-names: "Shelhamer"
+        given-names: "Evan"
+      - family-names: "Liu"
+        given-names: "Shaoteng"
+      - family-names: "Olshausen"
+        given-names: "Bruno"
+      - family-names: "Darrell"
+        given-names: "Trevor"
+    year: 2021
+    journal: "International Conference on Learning Representations (ICLR)"
+    url: "https://arxiv.org/abs/2006.10726"
+    notes: "Proposes TENT: minimising prediction entropy to update BN affine parameters at test time."
+
+  - type: article
+    title: "Improving Robustness Against Common Corruptions by Covariate Shift Adaptation"
+    authors:
+      - family-names: "Schneider"
+        given-names: "Steffen"
+      - family-names: "Rusak"
+        given-names: "Evgenia"
+      - family-names: "Eck"
+        given-names: "Luisa"
+      - family-names: "Bringmann"
+        given-names: "Oliver"
+      - family-names: "Brendel"
+        given-names: "Wieland"
+      - family-names: "Bethge"
+        given-names: "Matthias"
+    year: 2020
+    journal: "Advances in Neural Information Processing Systems (NeurIPS)"
+    volume: "33"
+    pages: "11539-11551"
+    url: "https://arxiv.org/abs/2006.16971"
+    notes: "Proposes TTN: updating BN running statistics from test batches without gradient computation."
+
+  - type: article
+    title: "Test-Time Training with Self-Supervision for Generalization under Distribution Shifts"
+    authors:
+      - family-names: "Sun"
+        given-names: "Yu"
+      - family-names: "Wang"
+        given-names: "Xiaolong"
+      - family-names: "Liu"
+        given-names: "Zhuang"
+      - family-names: "Miller"
+        given-names: "John"
+      - family-names: "Efros"
+        given-names: "Alexei"
+      - family-names: "Hardt"
+        given-names: "Moritz"
+    year: 2020
+    journal: "International Conference on Machine Learning (ICML)"
+    url: "https://arxiv.org/abs/1909.13231"
+    notes: "Pseudo-label TTA: generating and fine-tuning on high-confidence predictions at test time."
