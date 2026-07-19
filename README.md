@@ -82,19 +82,25 @@ only the unlabelled test batch itself.  This benchmark systematically
 evaluates four strategies on CIFAR-10-C (15 corruption types × 5 severity
 levels) using a ResNet-50 backbone. CIFAR-10-C consists of 15 corruption types × 5 severity levels with 10,000 test images per corruption.
 
-### Methodology Pipeline
+### Complete TTA Methodology Pipeline
 
 ```text
-  Test Images (Clean)
-          │
-          ▼
-      Corruption (e.g., Snow, Blur)
-          │
-          ▼
-   Adaptation Method (TTN, TENT, etc.)
-          │
-          ▼
-      Prediction
+┌─────────────────────────┐         ┌───────────────────────────────┐
+│     SOURCE DOMAIN       │         │       TARGET DOMAIN (Test)    │
+│  (Clean CIFAR-10 Data)  │         │   (CIFAR-10-C Corruptions)    │
+└────────────┬────────────┘         └───────────────┬───────────────┘
+             │                                      │ (Unlabelled Batch)
+             ▼                                      ▼
+      Train ResNet-50 ─────────────────────► Deploy Model
+     (Cross-Entropy)      (Freeze core)     (Update BN params)
+                                                    │
+                                  ┌─────────────────┴─────────────────┐
+                                  │ 1. Forward Pass                   │
+                                  │ 2. Calculate Unsupervised Loss    │
+                                  │    (e.g., Entropy Minimisation)   │
+                                  │ 3. Backprop & Update BN layers    │
+                                  │ 4. Output Final Prediction        │
+                                  └───────────────────────────────────┘
 ```
 
 ### Project Architecture
