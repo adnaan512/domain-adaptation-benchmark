@@ -84,24 +84,7 @@ levels) using a ResNet-50 backbone. CIFAR-10-C consists of 15 corruption types �
 
 ### Complete TTA Methodology Pipeline
 
-```text
-┌─────────────────────────┐         ┌───────────────────────────────┐
-│     SOURCE DOMAIN       │         │       TARGET DOMAIN (Test)    │
-│  (Clean CIFAR-10 Data)  │         │   (CIFAR-10-C Corruptions)    │
-└────────────┬────────────┘         └───────────────┬───────────────┘
-             │                                      │ (Unlabelled Batch)
-             ▼                                      ▼
-      Train ResNet-50 ─────────────────────► Deploy Model
-     (Cross-Entropy)      (Freeze core)     (Update BN params)
-                                                    │
-                                  ┌─────────────────┴─────────────────┐
-                                  │ 1. Forward Pass                   │
-                                  │ 2. Calculate Unsupervised Loss    │
-                                  │    (e.g., Entropy Minimisation)   │
-                                  │ 3. Backprop & Update BN layers    │
-                                  │ 4. Output Final Prediction        │
-                                  └───────────────────────────────────┘
-```
+![Methodology Pipeline](figures/methodology_pipeline.png)
 
 ### Project Architecture
 
