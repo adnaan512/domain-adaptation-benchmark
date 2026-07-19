@@ -6,6 +6,9 @@
 [![CI](https://github.com/adnaan512/domain-adaptation-benchmark/actions/workflows/ci.yml/badge.svg)](https://github.com/adnaan512/domain-adaptation-benchmark/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Reproducible](https://img.shields.io/badge/Reproducible-Yes-success.svg)]()
+[![Papers With Code](https://img.shields.io/badge/Papers%20With%20Code-CIFAR--10--C-21CBCE.svg)]()
 
 ---
 
@@ -13,7 +16,7 @@
 
 | Finding | Detail |
 |---------|--------|
-| 🏆 **Best Method** | TENT (entropy minimisation) achieves the lowest mCE, outperforming all other methods |
+| 🏆 **Best Method** | TENT achieves the best overall mean corruption error (mCE), while TTN performs best on several blur and contrast-related corruptions. |
 | 📉 **mCE Improvement** | TENT reduces mean corruption error by **~36%** vs. the no-adaptation baseline |
 | ⚠️ **Counter-Intuitive** | Pseudo-label adaptation **severely degrades** accuracy on blur corruptions (up to -41% drop due to confirmation bias) |
 | 📊 **Entropy Predicts Gain** | Extremely strong correlation (**Pearson r = +0.938**) between pre-adaptation entropy and TENT benefit (RQ3) |
@@ -49,26 +52,64 @@ python main.py --mode full --data-dir ./CIFAR-10-C
 
 ---
 
+## Limitations
+
+This benchmark focuses on CIFAR-10-C using a ResNet-50 backbone.
+While it provides controlled evaluation across common corruptions,
+results may not directly transfer to larger datasets such as
+ImageNet-C or real-world deployment scenarios.
+Future work includes evaluating Vision Transformers and larger-scale benchmarks.
+
+---
+
 ## Abstract
 
 Deep learning models deployed in the real world routinely encounter data
 distributions that differ from their training data.  Autonomous vehicles
 trained in clear conditions can see accuracy drop significantly in rain or
 heavy fog ([Hendrycks & Dietterich, 2019](https://arxiv.org/abs/1903.12261)).
-Medical imaging models fail silently when tested on scanners with different
-calibration settings.  This problem — **distribution shift** — is one of the
+Medical imaging models may experience substantial performance degradation when evaluated on scanners with different calibration settings. This problem — **distribution shift** — is one of the
 most significant barriers to reliable AI deployment.
 
 **Test-Time Adaptation (TTA)** addresses this without requiring labelled data
 from the new environment: the model adapts to the test distribution using
 only the unlabelled test batch itself.  This benchmark systematically
 evaluates four strategies on CIFAR-10-C (15 corruption types × 5 severity
-levels) using a ResNet-50 backbone:
+levels) using a ResNet-50 backbone. CIFAR-10-C consists of 15 corruption types × 5 severity levels with 10,000 test images per corruption.
+
+### Methodology Pipeline
+
+```text
+  Test Images (Clean)
+          │
+          ▼
+      Corruption (e.g., Snow, Blur)
+          │
+          ▼
+   Adaptation Method (TTN, TENT, etc.)
+          │
+          ▼
+      Prediction
+```
+
+### Project Architecture
+
+```text
+domain-adaptation-benchmark/
+├── src/
+│   ├── adaptation/       # TTA methods (tent.py, ttn.py, pseudo_label.py)
+│   ├── backbone/         # ResNet-50 models and fine-tuning
+│   └── data/             # Corruption data loaders
+├── tests/                # Pytest unit tests
+├── figures/              # Generated plots and heatmaps
+├── notebooks/            # Kaggle submission scripts
+└── main.py               # CLI entrypoint
+```
 
 | Method | Core Idea | Cost |
 |--------|-----------|------|
 | **No Adapt** | Direct inference — baseline | 1 forward pass |
-| **TTN** | Update BN running statistics from test batch | 2 forward passes |
+| **TTN (Test-Time Normalization)** | Update BN running statistics from test batch | 2 forward passes |
 | **TENT** | Minimise prediction entropy via BN affine params | 1 fwd + 1 bwd |
 | **Pseudo-Label** | Fine-tune on high-confidence test predictions | 2 fwd + 1 bwd |
 
