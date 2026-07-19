@@ -57,16 +57,6 @@ python main.py --mode full --data-dir ./CIFAR-10-C
 
 ---
 
-## Limitations
-
-This benchmark focuses on CIFAR-10-C using a ResNet-50 backbone.
-While it provides controlled evaluation across common corruptions,
-results may not directly transfer to larger datasets such as
-ImageNet-C or real-world deployment scenarios.
-Future work includes evaluating Vision Transformers and larger-scale benchmarks.
-
----
-
 ## Abstract
 
 Deep learning models deployed in the real world routinely encounter data
@@ -248,3 +238,10 @@ If you use this benchmark, please cite the key works above.
 GitHub: [github.com/adnaan512/domain-adaptation-benchmark](https://github.com/adnaan512/domain-adaptation-benchmark)
 
 
+## Limitations
+
+This benchmark focuses on CIFAR-10-C using a ResNet-50 backbone.
+While it provides controlled evaluation across common corruptions,
+results may not directly transfer to larger datasets such as
+ImageNet-C or real-world deployment scenarios.
+Future work includes evaluating Vision Transformers and larger-scale benchmarks.
