@@ -17,20 +17,20 @@
 
 | Finding | Detail |
 |---------|--------|
-| 🏆 **Best Method** | TENT achieves the best overall mean corruption error (mCE), while TTN performs best on several blur and contrast-related corruptions. |
-| 📉 **mCE Improvement** | TENT reduces mean corruption error by **~36%** vs. the no-adaptation baseline |
-| ⚠️ **Counter-Intuitive** | Pseudo-label adaptation **severely degrades** accuracy on blur corruptions (up to -41% drop due to confirmation bias) |
-| 📊 **Entropy Predicts Gain** | Extremely strong correlation (**Pearson r = +0.938**) between pre-adaptation entropy and TENT benefit (RQ3) |
-| 🔬 **Statistical Rigor** | All improvements are statistically significant (*p < 0.001*, Wilcoxon signed-rank test) |
+| **Best Method** | TENT achieves the best overall mean corruption error (mCE), while TTN performs best on several blur and contrast-related corruptions. |
+|  **mCE Improvement** | TENT reduces mean corruption error by **~36%** vs. the no-adaptation baseline |
+|  **Counter-Intuitive** | Pseudo-label adaptation **severely degrades** accuracy on blur corruptions (up to -41% drop due to confirmation bias) |
+|  **Entropy Predicts Gain** | Extremely strong correlation (**Pearson r = +0.938**) between pre-adaptation entropy and TENT benefit (RQ3) |
+| **Statistical Rigor** | All improvements are statistically significant (*p < 0.001*, Wilcoxon signed-rank test) |
 
 ---
 
 ## Reproduce Results (One Click)
 
-**Option A — Kaggle Notebook (recommended):**
+**Option A  Kaggle Notebook (recommended):**
 
 You can view the full, executed benchmark and run it yourself on Kaggle:
-👉 **[View Kaggle Notebook Here](https://www.kaggle.com/code/adnanhassnain/domain-adaptation-benchmark)**
+ **[View Kaggle Notebook Here](https://www.kaggle.com/code/adnanhassnain/domain-adaptation-benchmark)**
 
 ```bash
 # 1. Create a new notebook on Kaggle, enable T4 GPU.
@@ -43,7 +43,7 @@ You can view the full, executed benchmark and run it yourself on Kaggle:
 !python notebooks/kaggle_benchmark.py
 ```
 
-**Option B — Local (CPU, ~30 min):**
+**Option B  Local (:**
 ```bash
 git clone https://github.com/adnaan512/domain-adaptation-benchmark
 cd domain-adaptation-benchmark
@@ -73,7 +73,7 @@ Deep learning models deployed in the real world routinely encounter data
 distributions that differ from their training data.  Autonomous vehicles
 trained in clear conditions can see accuracy drop significantly in rain or
 heavy fog ([Hendrycks & Dietterich, 2019](https://arxiv.org/abs/1903.12261)).
-Medical imaging models may experience substantial performance degradation when evaluated on scanners with different calibration settings. This problem — **distribution shift** — is one of the
+Medical imaging models may experience substantial performance degradation when evaluated on scanners with different calibration settings. This problem — **distribution shift**  is one of the
 most significant barriers to reliable AI deployment.
 
 **Test-Time Adaptation (TTA)** addresses this without requiring labelled data
@@ -113,7 +113,7 @@ domain-adaptation-benchmark/
 
 | Method | Core Idea | Cost |
 |--------|-----------|------|
-| **No Adapt** | Direct inference — baseline | 1 forward pass |
+| **No Adapt** | Direct inference  baseline | 1 forward pass |
 | **TTN (Test-Time Normalization)** | Update BN running statistics from test batch | 2 forward passes |
 | **TENT** | Minimise prediction entropy via BN affine params | 1 fwd + 1 bwd |
 | **Pseudo-Label** | Fine-tune on high-confidence test predictions | 2 fwd + 1 bwd |
@@ -154,12 +154,7 @@ Rel. Improve                +0.0%     +34.4%    +36.1%   -141.5%
 
 ![mCE Comparison](figures/mce_comparison.png)
 
-| Method | mCE | vs Baseline |
-|--------|-----|-------------|
-| No Adapt (baseline) | 0.2284 | — |
-| TTN | 0.1497 | **+34.45%** |
-| **TENT** | **0.1459** | **+36.13%** ← best |
-| Pseudo-Label | 0.5516 | -141.52% |
+
 
 ### Category Performance Comparison
 
@@ -167,7 +162,7 @@ Rel. Improve                +0.0%     +34.4%    +36.1%   -141.5%
 
 ---
 
-## ⚠ Counter-Intuitive Finding: Pseudo-Label Fails on Blur
+## ⚠Counter-Intuitive Finding: Pseudo-Label Fails on Blur
 
 Pseudo-label adaptation **severely degrades accuracy below the no-adaptation baseline**
 on all four blur corruption types:
@@ -181,7 +176,7 @@ on all four blur corruption types:
 | **glass_blur** | 64.67% | 34.29% | **-30.38%** |
 | **defocus_blur** | 89.26% | 84.20% | **-5.06%** |
 
-**Root cause — Confirmation Bias in Self-Training:**
+**Root cause  Confirmation Bias in Self-Training:**
 
 Blur corruptions cause the model to make *confidently wrong* predictions.
 A blurred image may lose fine-grained detail while retaining coarse texture that the model has learned to associate with the wrong class.
@@ -204,23 +199,7 @@ We discovered an **extremely strong positive correlation (Pearson r = +0.9384)**
 
 Corruptions that confuse the model the most initially (like `gaussian_noise` and `impulse_noise`) have the highest entropy and see the most dramatic improvements from TENT (+25% accuracy gain). Corruptions the model is already confident about (like `brightness`) see almost no benefit.
 
----
 
-## Statistical Analysis
-
-All results include bootstrap 95% confidence intervals and paired Wilcoxon
-signed-rank tests for method comparisons:
-
-```
-Method           Acc (%)      95% CI             mCE        p-value    Sig.   Improved  
--------------------------------------------------------------------------------------
-No Adapt         77.16%       [71.2%, 83.2%]     0.2284     —          —      —         
-TTN              85.03%       [81.7%, 88.5%]     0.1497     0.0007     Yes*   15/15     
-TENT             85.41%       [82.8%, 88.1%]     0.1459     0.0008     Yes*   14/15     
-Pseudo-Label     44.84%       [35.9%, 55.6%]     0.5516     0.0007     Yes*   0/15      
--------------------------------------------------------------------------------------
-* Significant at p < 0.05 (Wilcoxon signed-rank test)
-```
 
 ---
 
@@ -267,7 +246,7 @@ If you use this benchmark, please cite the key works above.
 @software{hassnain2024dab,
   title  = {Domain Adaptation Benchmark: Test-Time Adaptation for Distribution Shift},
   author = {Hassnain, Adnan},
-  year   = {2024},
+  year   = {2026},
   url    = {https://github.com/adnaan512/domain-adaptation-benchmark}
 }
 ```
@@ -279,6 +258,4 @@ If you use this benchmark, please cite the key works above.
 **Adnan Hassnain** | BS Computer Science, NUST Pakistan
 GitHub: [github.com/adnaan512/domain-adaptation-benchmark](https://github.com/adnaan512/domain-adaptation-benchmark)
 
-**Research Interests:** Domain Adaptation, Test-Time Adaptation, Distribution Shift, Robustness in Deep Learning, Uncertainty Quantification, Self-Supervised Learning
 
-**Looking for:** MS opportunities in Machine Learning / Computer Vision / Trustworthy AI
