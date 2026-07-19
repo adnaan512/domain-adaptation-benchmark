@@ -573,6 +573,13 @@ def handle_full_sweep(args: argparse.Namespace) -> None:
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def main() -> None:
+    # Ensure UTF-8 printing for Windows console (ASCII heatmap)
+    if sys.stdout.encoding.lower() != "utf-8":
+        try:
+            sys.stdout.reconfigure(encoding="utf-8")
+        except AttributeError:
+            pass
+
     parser = build_parser()
     args   = parser.parse_args()
 

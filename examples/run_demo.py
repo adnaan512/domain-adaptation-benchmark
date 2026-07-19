@@ -111,6 +111,13 @@ def parse_args() -> argparse.Namespace:
 
 
 def run_demo(args: argparse.Namespace) -> None:
+    # Ensure UTF-8 printing for Windows console
+    if sys.stdout.encoding.lower() != "utf-8":
+        try:
+            sys.stdout.reconfigure(encoding="utf-8")
+        except AttributeError:
+            pass
+
     t_start = time.perf_counter()
     device  = torch.device("cpu")
 
