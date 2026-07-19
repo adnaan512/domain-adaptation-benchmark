@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domain Adaptation Benchmark — Demo</title>
+  <style>
+    :root {
+      --bg:          #0d0d18;
+      --surface:     #14142a;
+      --card:        #1c1c35;
+      --border:      #2a2a55;
+      --text:        #c8c8e8;
+      --text-muted:  #7878a8;
+      --accent:      #5a8fff;
+      --green:       #3adb7a;
+      --amber:       #f0b429;
+      --red:         #e05555;
+      --win-bg:      #1a3a5c;
+      --win-border:  #2a6aac;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+    header p.subtitle {
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      font-size: 0.95rem;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.15rem 0.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    /* ── Section titles ── */
+    h2 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding-left: 0.75rem;
+      margin: 2.5rem 0 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    h3 {
+      font-size: 1rem;
+      color: var(--text);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    /* ── Summary cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    .card .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+    }
+    .card .value {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin: 0.25rem 0;
+    }
+    .card .sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .card.accent  { border-color: var(--accent); }
+    .card.green   { border-color: var(--green);  }
+    .card.green .value { color: var(--green); }
+    .card.amber   { border-color: var(--amber);  }
+    .card.amber .value { color: var(--amber); }
+    .card.red     { border-color: var(--red);    }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    thead th {
+      background: var(--surface);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.75rem;
+      padding: 0.7rem 0.9rem;
+      border-bottom: 2px solid var(--border);
+      text-align: center;
+    }
+    thead th.left { text-align: left; }
+    tbody tr:hover { background: rgba(90,143,255,0.04); }
+    tbody td {
+      padding: 0.5rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    tbody td.name {
+      text-align: left;
+      font-family: monospace;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    tbody td.cat {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+    .acc-cell {
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      font-family: monospace;
+      font-weight: 600;
+      font-size: 0.87rem;
+    }
+    .win-cell { border: 2px solid var(--win-border); }
+    .mce-row td { font-weight: 700; border-top: 2px solid var(--border); }
+
+    /* ── Pre-formatted blocks (ASCII) ── */
+    pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      overflow-x: auto;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    /* ── Warning / finding box ── */
+    .finding {
+      background: #1f1215;
+      border: 1px solid var(--red);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .finding h3 { color: var(--red); margin-top: 0; }
+    .finding p  { margin: 0.5rem 0; font-size: 0.9rem; }
+
+    /* ── Info box ── */
+    .infobox {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 1.5rem 0;
+    }
+    .infobox strong { color: var(--text); }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    </style>
+
+</head>
+<body>
+
+<header>
+  <h1>🔬 Domain Adaptation Benchmark — Demo</h1>
+  <p class="subtitle">
+    Test-Time Adaptation Evaluation — Distribution Shift in Deep Learning
+  </p>
+  <span class="badge">🗂 3 corruption types</span>
+  <span class="badge">⚙ 4 TTA methods</span>
+  <span class="badge">📐 Severity 3</span>
+  <span class="badge">🏗 ResNet-50 backbone</span>
+  <span class="badge">📊 CIFAR-10-C</span>
+</header>
+
+
+<h2>Summary</h2>
+<div class="cards">
+  <div class="card">
+    <div class="label">Baseline mCE (No Adapt)</div>
+    <div class="value">0.8969</div>
+    <div class="sub">Mean corruption error without adaptation</div>
+  </div>
+  <div class="card green">
+    <div class="label">Best Method</div>
+    <div class="value" style="font-size:1.4rem">TENT</div>
+    <div class="sub">mCE = 0.8823</div>
+  </div>
+  <div class="card green">
+    <div class="label">Best mCE Improvement</div>
+    <div class="value">+1.6%</div>
+    <div class="sub">Relative reduction vs. baseline</div>
+  </div>
+  <div class="card green">
+    <div class="label">Entropy–Gain Pearson r</div>
+    <div class="value">+0.479</div>
+    <div class="sub">Entropy predicts TTA benefit (RQ3)</div>
+  </div>
+</div>
+
+
+<h2>Accuracy Heatmap (Corruption × Method)</h2>
+<p style="margin-bottom:.75rem;font-size:.85rem;color:var(--text-muted)"><span style="background:#1a6b3a;padding:2px 8px;border-radius:3px;font-size:.75rem">▓ &gt;80%</span> <span style="background:#5a6b1a;padding:2px 8px;border-radius:3px;font-size:.75rem">▒ 60-80%</span> <span style="background:#6b1a1a;padding:2px 8px;border-radius:3px;font-size:.75rem">░ &lt;60%</span> <span style="border:2px solid #2a6aac;padding:2px 8px;border-radius:3px;font-size:.75rem">■ winner</span></p>
+<div class="table-wrap">
+<table>
+  
+  <thead>
+    <tr>
+      <th class="left">Corruption</th>
+      <th class="left">Category</th>
+      <th>No Adapt</th><th>TTN</th><th>TENT</th><th>Pseudo-Label</th>
+      <th>Winner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="name">gaussian_noise</td><td class="cat">NOISE</td><td><span class="acc-cell" style="background:#6b1a1a">11.2%</span></td><td><span class="acc-cell" style="background:#6b1a1a">10.6%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">12.5%</span></td><td><span class="acc-cell" style="background:#6b1a1a">9.8%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">blur</td><td class="cat"></td><td><span class="acc-cell" style="background:#6b1a1a">7.7%</span></td><td><span class="acc-cell" style="background:#6b1a1a">9.1%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">10.8%</span></td><td><span class="acc-cell" style="background:#6b1a1a">7.7%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">brightness</td><td class="cat">WEATHER</td><td><span class="acc-cell" style="background:#6b1a1a">12.0%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">12.3%</span></td><td><span class="acc-cell" style="background:#6b1a1a">12.0%</span></td><td><span class="acc-cell" style="background:#6b1a1a">12.0%</span></td><td><strong>TTN</strong></td></tr>
+    <tr class="mce-row">
+      <td class="name">mCE (↓ better)</td><td></td><td>0.8969</td><td>0.8932</td><td>0.8823</td><td>0.9016</td><td></td>
+    </tr>
+    <tr class="mce-row">
+      <td class="name">Rel. Improvement</td><td></td><td style="color:var(--red)">+0.0%</td><td style="color:var(--green)">+0.4%</td><td style="color:var(--green)">+1.6%</td><td style="color:var(--red)">-0.5%</td><td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+<h2>Mean Corruption Error (mCE)</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th class="left">Method</th>
+      <th>mCE (lower = better)</th>
+      <th>vs. Baseline</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody><tr><td class='name' style=''>No Adapt</td><td style=''>0.8969</td><td style='color:var(--text);'>+0.0%</td><td></td></tr><tr><td class='name' style=''>TTN</td><td style=''>0.8932</td><td style='color:var(--green);'>+0.4%</td><td></td></tr><tr><td class='name' style=' font-weight:700;'>TENT</td><td style=' font-weight:700;'>0.8823</td><td style='color:var(--green); font-weight:700;'>+1.6%</td><td>✓ Best</td></tr><tr><td class='name' style=''>Pseudo-Label</td><td style=''>0.9016</td><td style='color:var(--text);'>-0.5%</td><td></td></tr></tbody>
+</table>
+</div>
+
+
+<h2>Uncertainty Analysis — RQ3</h2>
+<div class="infobox">
+  <strong>Hypothesis:</strong> High pre-adaptation entropy signals a larger distribution
+  shift, so TTA should help more.
+  <br>
+  <strong>Result:</strong> Pearson r(H̄_pre, ΔTENT) = <strong>+0.4788</strong>
+  &nbsp;—&nbsp; Moderate correlation (r = +0.479): entropy partially predicts TTA benefit. Noise corruptions tend to have higher entropy and larger TENT gains than digital corruptions.
+</div>
+<h3>Entropy vs. Adaptation Gain (ASCII Scatter)</h3>
+<pre>  ΔAcc↑  (y_max=+0.031)
+  +0.031 │                                                           ·
+         │                                                            
+         │                                                            
+         │                                                            
+         │                                                            
+         │                                                            
+         │                                                            
+         │                                                            
+         │·                                                           
+         │                                                            
+         │                                                            
+         │                                                            
+         │                                                            
+         │                                                            
+         │                                    ·                       
+         └────────────────────────────────────────────────────────────
+          2.275                                              2.286
+          H̄_pre →                                                    </pre>
+<h3>Full Uncertainty Report</h3>
+<pre>======================================================================
+UNCERTAINTY ANALYSIS — Pre-Adaptation Entropy vs. TENT Gain (RQ3)
+======================================================================
+Pearson r (entropy ↔ TENT adaptation gain):  +0.4788
+
+Corruption                  H̄_pre     ΔAcc     Base     TENT  Uncertain%
+----------------------------------------------------------------------
+blur                        2.2857  +0.0312   7.66%  10.78%     100.0%
+brightness                  2.2817  +0.0000  12.03%  12.03%     100.0%
+gaussian_noise              2.2751  +0.0125  11.25%  12.50%     100.0%
+
+Interpretation:
+  r = +0.4788 → Moderate positive correlation.
+  Entropy partially predicts TENT benefit across corruption types.</pre>
+
+
+<h2>Winner per Corruption Type</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th class="left">Corruption</th>
+      <th class="left">Category</th>
+      <th>Best Method</th>
+      <th>Accuracy</th>
+    </tr>
+  </thead>
+  <tbody><tr><td class='name'>gaussian_noise</td><td class='cat'>NOISE</td><td><strong>TENT</strong></td><td>12.5%</td></tr><tr><td class='name'>blur</td><td class='cat'></td><td><strong>TENT</strong></td><td>10.8%</td></tr><tr><td class='name'>brightness</td><td class='cat'>WEATHER</td><td><strong>TTN</strong></td><td>12.3%</td></tr></tbody>
+</table>
+</div>
+
+
+
+<h2>Research Questions</h2>
+<div class="infobox">
+  <p>
+    <strong>RQ1 — Do TTA methods improve accuracy consistently across all corruptions?</strong><br>
+    Best method: <em>TENT</em>.
+    Pseudo-label degrades on blur corruptions (confirmation bias).
+    TTN and TENT improve consistently on noise and weather corruptions.
+  </p>
+  <p style="margin-top:0.75rem">
+    <strong>RQ2 — Does TENT outperform TTN across different severities?</strong><br>
+    Yes — TENT mCE (0.8823) &lt; TTN mCE (0.8932): entropy minimisation outperforms stat-only adaptation.
+  </p>
+  <p style="margin-top:0.75rem">
+    <strong>RQ3 — Can pre-adaptation entropy predict which corruptions benefit most from TTA?</strong><br>
+    r = +0.4788. Moderate support.
+  </p>
+</div>
+
+
+<footer>
+  <p>
+    <strong>References:</strong>
+    Hendrycks &amp; Dietterich (2019) CIFAR-10-C ·
+    Wang et al. (2021) TENT ·
+    Schneider et al. (2020) TTN ·
+    Sun et al. (2020) Pseudo-Label TTA
+  </p>
+  <p style="margin-top:0.5rem">
+    <a href="https://github.com/adnaan512/domain-adaptation-benchmark">
+      github.com/adnaan512/domain-adaptation-benchmark
+    </a>
+    &nbsp;·&nbsp; Adnan Hassnain | BS CS, NUST Pakistan
+  </p>
+</footer>
+
+</body>
+</html>
