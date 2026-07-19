@@ -162,7 +162,7 @@ Rel. Improve                +0.0%     +34.4%    +36.1%   -141.5%
 
 ---
 
-## ⚠Counter-Intuitive Finding: Pseudo-Label Fails on Blur
+## Counter-Intuitive Finding: Pseudo-Label Fails on Blur
 
 Pseudo-label adaptation **severely degrades accuracy below the no-adaptation baseline**
 on all four blur corruption types:
