@@ -9,6 +9,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Reproducible](https://img.shields.io/badge/Reproducible-Yes-success.svg)]()
 [![Papers With Code](https://img.shields.io/badge/Papers%20With%20Code-CIFAR--10--C-21CBCE.svg)]()
+[![Kaggle](https://img.shields.io/badge/Kaggle-Notebook-20BEFF?logo=Kaggle)](https://www.kaggle.com/your-username/your-notebook-name)
 
 ---
 
@@ -27,6 +28,10 @@
 ## Reproduce Results (One Click)
 
 **Option A — Kaggle Notebook (recommended):**
+
+You can view the full, executed benchmark and run it yourself on Kaggle:
+👉 **[View Kaggle Notebook Here](https://www.kaggle.com/your-username/your-notebook-name)**
+
 ```bash
 # 1. Create a new notebook on Kaggle, enable T4 GPU.
 # 2. Add your CIFAR-10 clean dataset and CIFAR-10-C.tar as input data to skip downloading.
