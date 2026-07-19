@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<!-- saved from url=(0876)https://storage.googleapis.com/kaggle-script-versions/336491981/output/domain-adaptation-benchmark/benchmark_report.html?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20260719%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260719T173612Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=38b51e6455aa0e2de434a57a98b4ffa4208de0980ee6b468be00ea46f43a7b9ef3490a1c577d50e00c7282a95e42cc1bab86d4b1f4e9b027d3faf747132cce1c425bc5ddcace23636303df89b27ee9bd7aae8c24a1f8a3552603758313989eef11fc8fa24823a946bf907bfafc65894db1bd55fb37fb4876254c85e6ef2bb65727681e0ba5dd4d848d8a06997368b0d6d032de2178f729d84582284a67ceefaa630e2eda0a7f616208af1dbfb7ed40d08606cf15add2b1579c4950b7371cff770df2559bfdb05b76a4c9135c217b14a0dd68d5384d1b8018604b534bfb3817157d438ec8cf33b89e192b6ea8a744536abd6186dc1e5fba3984acfa7950871614 -->
+<html lang="en" foxified-bridged="" foxified=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <meta charset="UTF-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Domain Adaptation Benchmark — Demo</title>
+  <title>Domain Adaptation Benchmark — Full Results</title>
   <style>
     :root {
       --bg:          #0d0d18;
@@ -204,15 +204,31 @@
     footer a { color: var(--accent); text-decoration: none; }
     </style>
 
-</head>
-<body>
+<style>@font-face {
+              font-family: 'Open Sans Regular';
+              font-style: normal;
+              font-weight: 400;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-regular.woff');
+          }</style><style>@font-face {
+              font-family: 'Open Sans Bold';
+              font-style: normal;
+              font-weight: 800;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/OpenSans-Bold.woff');
+          }</style><style>@font-face {
+              font-family: 'Open Sans ExtraBold';
+              font-style: normal;
+              font-weight: 800;
+              src: url('chrome-extension://gkkdmjjodidppndkbkhhknakbeflbomf/fonts/open_sans/open-sans-v18-latin-800.woff');
+          }</style><script type="text/javascript" src="./Domain Adaptation Benchmark — Full Results_files/c8d3a069-77c7-41b6-927e-06a4c17fac35" data-awssuidacr="f61ffa4f-d1a4-4564-91ca-c0f9a8df1f26"></script><style>undefined</style><style>.rc-slider{position:relative;width:100%;height:14px;padding:5px 0;border-radius:6px;touch-action:none;box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rc-slider *{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rc-slider-rail{position:absolute;width:100%;height:4px;background-color:#e9e9e9;border-radius:6px}.rc-slider-track,.rc-slider-tracks{position:absolute;height:4px;background-color:#abe2fb;border-radius:6px}.rc-slider-track-draggable{z-index:1;box-sizing:content-box;background-clip:content-box;border-top:5px solid rgba(0,0,0,0);border-bottom:5px solid rgba(0,0,0,0);transform:translateY(-5px)}.rc-slider-handle{position:absolute;z-index:1;width:14px;height:14px;margin-top:-5px;background-color:#fff;border:solid 2px #96dbfa;border-radius:50%;cursor:pointer;cursor:-webkit-grab;cursor:grab;opacity:.8;touch-action:pan-x}.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging{border-color:#57c5f7;box-shadow:0 0 0 5px #96dbfa}.rc-slider-handle:focus{outline:none;box-shadow:none}.rc-slider-handle:focus-visible{border-color:#2db7f5;box-shadow:0 0 0 3px #96dbfa}.rc-slider-handle-click-focused:focus{border-color:#96dbfa;box-shadow:unset}.rc-slider-handle:hover{border-color:#57c5f7}.rc-slider-handle:active{border-color:#57c5f7;box-shadow:0 0 5px #57c5f7;cursor:-webkit-grabbing;cursor:grabbing}.rc-slider-mark{position:absolute;top:18px;left:0;width:100%;font-size:12px}.rc-slider-mark-text{position:absolute;display:inline-block;color:#999;text-align:center;vertical-align:middle;cursor:pointer}.rc-slider-mark-text-active{color:#666}.rc-slider-step{position:absolute;width:100%;height:4px;background:rgba(0,0,0,0)}.rc-slider-dot{position:absolute;bottom:-2px;width:8px;height:8px;vertical-align:middle;background-color:#fff;border:2px solid #e9e9e9;border-radius:50%;cursor:pointer}.rc-slider-dot-active{border-color:#96dbfa}.rc-slider-dot-reverse{margin-right:-4px}.rc-slider-disabled{background-color:#e9e9e9}.rc-slider-disabled .rc-slider-track{background-color:#ccc}.rc-slider-disabled .rc-slider-handle,.rc-slider-disabled .rc-slider-dot{background-color:#fff;border-color:#ccc;box-shadow:none;cursor:not-allowed}.rc-slider-disabled .rc-slider-mark-text,.rc-slider-disabled .rc-slider-dot{cursor:not-allowed !important}.rc-slider-vertical{width:14px;height:100%;padding:0 5px}.rc-slider-vertical .rc-slider-rail{width:4px;height:100%}.rc-slider-vertical .rc-slider-track{bottom:0;left:5px;width:4px}.rc-slider-vertical .rc-slider-track-draggable{border-top:0;border-bottom:0;border-right:5px solid rgba(0,0,0,0);border-left:5px solid rgba(0,0,0,0);transform:translateX(-5px)}.rc-slider-vertical .rc-slider-handle{position:absolute;z-index:1;margin-top:0;margin-left:-5px;touch-action:pan-y}.rc-slider-vertical .rc-slider-mark{top:0;left:18px;height:100%}.rc-slider-vertical .rc-slider-step{width:4px;height:100%}.rc-slider-vertical .rc-slider-dot{margin-left:-2px}.rc-slider-tooltip-zoom-down-enter,.rc-slider-tooltip-zoom-down-appear{display:block !important;animation-duration:.3s;animation-fill-mode:both;animation-play-state:paused}.rc-slider-tooltip-zoom-down-leave{display:block !important;animation-duration:.3s;animation-fill-mode:both;animation-play-state:paused}.rc-slider-tooltip-zoom-down-enter.rc-slider-tooltip-zoom-down-enter-active,.rc-slider-tooltip-zoom-down-appear.rc-slider-tooltip-zoom-down-appear-active{animation-name:rcSliderTooltipZoomDownIn;animation-play-state:running}.rc-slider-tooltip-zoom-down-leave.rc-slider-tooltip-zoom-down-leave-active{animation-name:rcSliderTooltipZoomDownOut;animation-play-state:running}.rc-slider-tooltip-zoom-down-enter,.rc-slider-tooltip-zoom-down-appear{transform:scale(0, 0);animation-timing-function:cubic-bezier(0.23, 1, 0.32, 1)}.rc-slider-tooltip-zoom-down-leave{animation-timing-function:cubic-bezier(0.755, 0.05, 0.855, 0.06)}@keyframes rcSliderTooltipZoomDownIn{0%{transform:scale(0, 0);transform-origin:50% 100%;opacity:0}100%{transform:scale(1, 1);transform-origin:50% 100%}}@keyframes rcSliderTooltipZoomDownOut{0%{transform:scale(1, 1);transform-origin:50% 100%}100%{transform:scale(0, 0);transform-origin:50% 100%;opacity:0}}.rc-slider-tooltip{position:absolute;top:-9999px;left:-9999px;visibility:visible;box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rc-slider-tooltip *{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rc-slider-tooltip-hidden{display:none}.rc-slider-tooltip-placement-top{padding:4px 0 8px 0}.rc-slider-tooltip-inner{min-width:24px;height:24px;padding:6px 2px;color:#fff;font-size:12px;line-height:1;text-align:center;text-decoration:none;background-color:#6c6c6c;border-radius:6px;box-shadow:0 0 4px #d9d9d9}.rc-slider-tooltip-arrow{position:absolute;width:0;height:0;border-color:rgba(0,0,0,0);border-style:solid}.rc-slider-tooltip-placement-top .rc-slider-tooltip-arrow{bottom:4px;left:50%;margin-left:-4px;border-width:4px 4px 0;border-top-color:#6c6c6c}</style><style></style><style type="text/css">:where(html[dir="ltr"]),:where([data-sonner-toaster][dir="ltr"]){--toast-icon-margin-start: -3px;--toast-icon-margin-end: 4px;--toast-svg-margin-start: -1px;--toast-svg-margin-end: 0px;--toast-button-margin-start: auto;--toast-button-margin-end: 0;--toast-close-button-start: 0;--toast-close-button-end: unset;--toast-close-button-transform: translate(-35%, -35%)}:where(html[dir="rtl"]),:where([data-sonner-toaster][dir="rtl"]){--toast-icon-margin-start: 4px;--toast-icon-margin-end: -3px;--toast-svg-margin-start: 0px;--toast-svg-margin-end: -1px;--toast-button-margin-start: 0;--toast-button-margin-end: auto;--toast-close-button-start: unset;--toast-close-button-end: 0;--toast-close-button-transform: translate(35%, -35%)}:where([data-sonner-toaster]){position:fixed;width:var(--width);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;--gray1: hsl(0, 0%, 99%);--gray2: hsl(0, 0%, 97.3%);--gray3: hsl(0, 0%, 95.1%);--gray4: hsl(0, 0%, 93%);--gray5: hsl(0, 0%, 90.9%);--gray6: hsl(0, 0%, 88.7%);--gray7: hsl(0, 0%, 85.8%);--gray8: hsl(0, 0%, 78%);--gray9: hsl(0, 0%, 56.1%);--gray10: hsl(0, 0%, 52.3%);--gray11: hsl(0, 0%, 43.5%);--gray12: hsl(0, 0%, 9%);--border-radius: 8px;box-sizing:border-box;padding:0;margin:0;list-style:none;outline:none;z-index:999999999}:where([data-sonner-toaster][data-x-position="right"]){right:max(var(--offset),env(safe-area-inset-right))}:where([data-sonner-toaster][data-x-position="left"]){left:max(var(--offset),env(safe-area-inset-left))}:where([data-sonner-toaster][data-x-position="center"]){left:50%;transform:translate(-50%)}:where([data-sonner-toaster][data-y-position="top"]){top:max(var(--offset),env(safe-area-inset-top))}:where([data-sonner-toaster][data-y-position="bottom"]){bottom:max(var(--offset),env(safe-area-inset-bottom))}:where([data-sonner-toast]){--y: translateY(100%);--lift-amount: calc(var(--lift) * var(--gap));z-index:var(--z-index);position:absolute;opacity:0;transform:var(--y);filter:blur(0);touch-action:none;transition:transform .4s,opacity .4s,height .4s,box-shadow .2s;box-sizing:border-box;outline:none;overflow-wrap:anywhere}:where([data-sonner-toast][data-styled="true"]){padding:16px;background:var(--normal-bg);border:1px solid var(--normal-border);color:var(--normal-text);border-radius:var(--border-radius);box-shadow:0 4px 12px #0000001a;width:var(--width);font-size:13px;display:flex;align-items:center;gap:6px}:where([data-sonner-toast]:focus-visible){box-shadow:0 4px 12px #0000001a,0 0 0 2px #0003}:where([data-sonner-toast][data-y-position="top"]){top:0;--y: translateY(-100%);--lift: 1;--lift-amount: calc(1 * var(--gap))}:where([data-sonner-toast][data-y-position="bottom"]){bottom:0;--y: translateY(100%);--lift: -1;--lift-amount: calc(var(--lift) * var(--gap))}:where([data-sonner-toast]) :where([data-description]){font-weight:400;line-height:1.4;color:inherit}:where([data-sonner-toast]) :where([data-title]){font-weight:500;line-height:1.5;color:inherit}:where([data-sonner-toast]) :where([data-icon]){display:flex;height:16px;width:16px;position:relative;justify-content:flex-start;align-items:center;flex-shrink:0;margin-left:var(--toast-icon-margin-start);margin-right:var(--toast-icon-margin-end)}:where([data-sonner-toast][data-promise="true"]) :where([data-icon])>svg{opacity:0;transform:scale(.8);transform-origin:center;animation:sonner-fade-in .3s ease forwards}:where([data-sonner-toast]) :where([data-icon])>*{flex-shrink:0}:where([data-sonner-toast]) :where([data-icon]) svg{margin-left:var(--toast-svg-margin-start);margin-right:var(--toast-svg-margin-end)}:where([data-sonner-toast]) :where([data-content]){display:flex;flex-direction:column;gap:2px}[data-sonner-toast][data-styled=true] [data-button]{border-radius:4px;padding-left:8px;padding-right:8px;height:24px;font-size:12px;color:var(--normal-bg);background:var(--normal-text);margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end);border:none;cursor:pointer;outline:none;display:flex;align-items:center;flex-shrink:0;transition:opacity .4s,box-shadow .2s}:where([data-sonner-toast]) :where([data-button]):focus-visible{box-shadow:0 0 0 2px #0006}:where([data-sonner-toast]) :where([data-button]):first-of-type{margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end)}:where([data-sonner-toast]) :where([data-cancel]){color:var(--normal-text);background:rgba(0,0,0,.08)}:where([data-sonner-toast][data-theme="dark"]) :where([data-cancel]){background:rgba(255,255,255,.3)}:where([data-sonner-toast]) :where([data-close-button]){position:absolute;left:var(--toast-close-button-start);right:var(--toast-close-button-end);top:0;height:20px;width:20px;display:flex;justify-content:center;align-items:center;padding:0;background:var(--gray1);color:var(--gray12);border:1px solid var(--gray4);transform:var(--toast-close-button-transform);border-radius:50%;cursor:pointer;z-index:1;transition:opacity .1s,background .2s,border-color .2s}:where([data-sonner-toast]) :where([data-close-button]):focus-visible{box-shadow:0 4px 12px #0000001a,0 0 0 2px #0003}:where([data-sonner-toast]) :where([data-disabled="true"]){cursor:not-allowed}:where([data-sonner-toast]):hover :where([data-close-button]):hover{background:var(--gray2);border-color:var(--gray5)}:where([data-sonner-toast][data-swiping="true"]):before{content:"";position:absolute;left:0;right:0;height:100%;z-index:-1}:where([data-sonner-toast][data-y-position="top"][data-swiping="true"]):before{bottom:50%;transform:scaleY(3) translateY(50%)}:where([data-sonner-toast][data-y-position="bottom"][data-swiping="true"]):before{top:50%;transform:scaleY(3) translateY(-50%)}:where([data-sonner-toast][data-swiping="false"][data-removed="true"]):before{content:"";position:absolute;inset:0;transform:scaleY(2)}:where([data-sonner-toast]):after{content:"";position:absolute;left:0;height:calc(var(--gap) + 1px);bottom:100%;width:100%}:where([data-sonner-toast][data-mounted="true"]){--y: translateY(0);opacity:1}:where([data-sonner-toast][data-expanded="false"][data-front="false"]){--scale: var(--toasts-before) * .05 + 1;--y: translateY(calc(var(--lift-amount) * var(--toasts-before))) scale(calc(-1 * var(--scale)));height:var(--front-toast-height)}:where([data-sonner-toast])>*{transition:opacity .4s}:where([data-sonner-toast][data-expanded="false"][data-front="false"][data-styled="true"])>*{opacity:0}:where([data-sonner-toast][data-visible="false"]){opacity:0;pointer-events:none}:where([data-sonner-toast][data-mounted="true"][data-expanded="true"]){--y: translateY(calc(var(--lift) * var(--offset)));height:var(--initial-height)}:where([data-sonner-toast][data-removed="true"][data-front="true"][data-swipe-out="false"]){--y: translateY(calc(var(--lift) * -100%));opacity:0}:where([data-sonner-toast][data-removed="true"][data-front="false"][data-swipe-out="false"][data-expanded="true"]){--y: translateY(calc(var(--lift) * var(--offset) + var(--lift) * -100%));opacity:0}:where([data-sonner-toast][data-removed="true"][data-front="false"][data-swipe-out="false"][data-expanded="false"]){--y: translateY(40%);opacity:0;transition:transform .5s,opacity .2s}:where([data-sonner-toast][data-removed="true"][data-front="false"]):before{height:calc(var(--initial-height) + 20%)}[data-sonner-toast][data-swiping=true]{transform:var(--y) translateY(var(--swipe-amount, 0px));transition:none}[data-sonner-toast][data-swipe-out=true][data-y-position=bottom],[data-sonner-toast][data-swipe-out=true][data-y-position=top]{animation:swipe-out .2s ease-out forwards}@keyframes swipe-out{0%{transform:translateY(calc(var(--lift) * var(--offset) + var(--swipe-amount)));opacity:1}to{transform:translateY(calc(var(--lift) * var(--offset) + var(--swipe-amount) + var(--lift) * -100%));opacity:0}}@media (max-width: 600px){[data-sonner-toaster]{position:fixed;--mobile-offset: 16px;right:var(--mobile-offset);left:var(--mobile-offset);width:100%}[data-sonner-toaster] [data-sonner-toast]{left:0;right:0;width:calc(100% - var(--mobile-offset) * 2)}[data-sonner-toaster][data-x-position=left]{left:var(--mobile-offset)}[data-sonner-toaster][data-y-position=bottom]{bottom:20px}[data-sonner-toaster][data-y-position=top]{top:20px}[data-sonner-toaster][data-x-position=center]{left:var(--mobile-offset);right:var(--mobile-offset);transform:none}}[data-sonner-toaster][data-theme=light]{--normal-bg: #fff;--normal-border: var(--gray4);--normal-text: var(--gray12);--success-bg: hsl(143, 85%, 96%);--success-border: hsl(145, 92%, 91%);--success-text: hsl(140, 100%, 27%);--info-bg: hsl(208, 100%, 97%);--info-border: hsl(221, 91%, 91%);--info-text: hsl(210, 92%, 45%);--warning-bg: hsl(49, 100%, 97%);--warning-border: hsl(49, 91%, 91%);--warning-text: hsl(31, 92%, 45%);--error-bg: hsl(359, 100%, 97%);--error-border: hsl(359, 100%, 94%);--error-text: hsl(360, 100%, 45%)}[data-sonner-toaster][data-theme=light] [data-sonner-toast][data-invert=true]{--normal-bg: #000;--normal-border: hsl(0, 0%, 20%);--normal-text: var(--gray1)}[data-sonner-toaster][data-theme=dark] [data-sonner-toast][data-invert=true]{--normal-bg: #fff;--normal-border: var(--gray3);--normal-text: var(--gray12)}[data-sonner-toaster][data-theme=dark]{--normal-bg: #000;--normal-border: hsl(0, 0%, 20%);--normal-text: var(--gray1);--success-bg: hsl(150, 100%, 6%);--success-border: hsl(147, 100%, 12%);--success-text: hsl(150, 86%, 65%);--info-bg: hsl(215, 100%, 6%);--info-border: hsl(223, 100%, 12%);--info-text: hsl(216, 87%, 65%);--warning-bg: hsl(64, 100%, 6%);--warning-border: hsl(60, 100%, 12%);--warning-text: hsl(46, 87%, 65%);--error-bg: hsl(358, 76%, 10%);--error-border: hsl(357, 89%, 16%);--error-text: hsl(358, 100%, 81%)}[data-rich-colors=true][data-sonner-toast][data-type=success],[data-rich-colors=true][data-sonner-toast][data-type=success] [data-close-button]{background:var(--success-bg);border-color:var(--success-border);color:var(--success-text)}[data-rich-colors=true][data-sonner-toast][data-type=info],[data-rich-colors=true][data-sonner-toast][data-type=info] [data-close-button]{background:var(--info-bg);border-color:var(--info-border);color:var(--info-text)}[data-rich-colors=true][data-sonner-toast][data-type=warning],[data-rich-colors=true][data-sonner-toast][data-type=warning] [data-close-button]{background:var(--warning-bg);border-color:var(--warning-border);color:var(--warning-text)}[data-rich-colors=true][data-sonner-toast][data-type=error],[data-rich-colors=true][data-sonner-toast][data-type=error] [data-close-button]{background:var(--error-bg);border-color:var(--error-border);color:var(--error-text)}.sonner-loading-wrapper{--size: 16px;height:var(--size);width:var(--size);position:absolute;inset:0;z-index:10}.sonner-loading-wrapper[data-visible=false]{transform-origin:center;animation:sonner-fade-out .2s ease forwards}.sonner-spinner{position:relative;top:50%;left:50%;height:var(--size);width:var(--size)}.sonner-loading-bar{animation:sonner-spin 1.2s linear infinite;background:var(--gray11);border-radius:6px;height:8%;left:-10%;position:absolute;top:-3.9%;width:24%}.sonner-loading-bar:nth-child(1){animation-delay:-1.2s;transform:rotate(.0001deg) translate(146%)}.sonner-loading-bar:nth-child(2){animation-delay:-1.1s;transform:rotate(30deg) translate(146%)}.sonner-loading-bar:nth-child(3){animation-delay:-1s;transform:rotate(60deg) translate(146%)}.sonner-loading-bar:nth-child(4){animation-delay:-.9s;transform:rotate(90deg) translate(146%)}.sonner-loading-bar:nth-child(5){animation-delay:-.8s;transform:rotate(120deg) translate(146%)}.sonner-loading-bar:nth-child(6){animation-delay:-.7s;transform:rotate(150deg) translate(146%)}.sonner-loading-bar:nth-child(7){animation-delay:-.6s;transform:rotate(180deg) translate(146%)}.sonner-loading-bar:nth-child(8){animation-delay:-.5s;transform:rotate(210deg) translate(146%)}.sonner-loading-bar:nth-child(9){animation-delay:-.4s;transform:rotate(240deg) translate(146%)}.sonner-loading-bar:nth-child(10){animation-delay:-.3s;transform:rotate(270deg) translate(146%)}.sonner-loading-bar:nth-child(11){animation-delay:-.2s;transform:rotate(300deg) translate(146%)}.sonner-loading-bar:nth-child(12){animation-delay:-.1s;transform:rotate(330deg) translate(146%)}@keyframes sonner-fade-in{0%{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}@keyframes sonner-fade-out{0%{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.8)}}@keyframes sonner-spin{0%{opacity:1}to{opacity:.15}}@media (prefers-reduced-motion){[data-sonner-toast],[data-sonner-toast]>*,.sonner-loading-bar{transition:none!important;animation:none!important}}.sonner-loader{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transform-origin:center;transition:opacity .2s,transform .2s}.sonner-loader[data-visible=false]{opacity:0;transform:scale(.8) translate(-50%,-50%)}
+</style><style>.mtp-toggle{position:relative;display:inline-block;width:50px;height:24px;margin:0 10px 20px 0}.mtp-toggle input{display:none}.mtp-toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;-webkit-transition:.4s;transition:.4s;border-radius:24px}.mtp-toggle-slider::before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:#fff;-webkit-transition:.4s;transition:.4s;border-radius:50%}.mtp-toggle input:checked+.mtp-toggle-slider{background-color:#4caf50}.mtp-toggle input:checked+.mtp-toggle-slider::before{-webkit-transform:translateX(26px);transform:translateX(26px)}.mtp-toggle input:disabled+.mtp-toggle-slider{cursor:not-allowed;opacity:.7}.mtp-toggle input:disabled+.mtp-toggle-slider::before{background-color:#f9f9f9}.mtp-toggle-slider.round{border-radius:24px}.mtp-toggle-slider.round::before{border-radius:50%}</style><style>.moon-loader{width:17px;height:17px;border:2px solid #fff;border-bottom-color:rgba(0,0,0,0);border-radius:50%;display:inline-block;box-sizing:border-box;animation:rotation 1s linear infinite}@keyframes rotation{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.kpo{position:relative !important;top:none;left:none}.canvas-container{user-select:auto !important;position:relative !important}.toolQA{width:30px;height:27px;border:1px solid #000;display:flex;justify-content:center;align-items:center}</style><script type="text/javascript" src="./Domain Adaptation Benchmark — Full Results_files/986df696-a484-42dc-a3ed-0466520e31dc"></script><link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com/"><link rel="stylesheet" href="./Domain Adaptation Benchmark — Full Results_files/css2"></head>
+<body cz-shortcut-listen="true">
 
 <header>
-  <h1>🔬 Domain Adaptation Benchmark — Demo</h1>
+  <h1>🔬 Domain Adaptation Benchmark — Full Results</h1>
   <p class="subtitle">
     Test-Time Adaptation Evaluation — Distribution Shift in Deep Learning
   </p>
-  <span class="badge">🗂 3 corruption types</span>
+  <span class="badge">🗂 15 corruption types</span>
   <span class="badge">⚙ 4 TTA methods</span>
   <span class="badge">📐 Severity 3</span>
   <span class="badge">🏗 ResNet-50 backbone</span>
@@ -224,22 +240,22 @@
 <div class="cards">
   <div class="card">
     <div class="label">Baseline mCE (No Adapt)</div>
-    <div class="value">0.8969</div>
+    <div class="value">0.2284</div>
     <div class="sub">Mean corruption error without adaptation</div>
   </div>
   <div class="card green">
     <div class="label">Best Method</div>
     <div class="value" style="font-size:1.4rem">TENT</div>
-    <div class="sub">mCE = 0.8823</div>
+    <div class="sub">mCE = 0.1459</div>
   </div>
   <div class="card green">
     <div class="label">Best mCE Improvement</div>
-    <div class="value">+1.6%</div>
+    <div class="value">+36.1%</div>
     <div class="sub">Relative reduction vs. baseline</div>
   </div>
   <div class="card green">
     <div class="label">Entropy–Gain Pearson r</div>
-    <div class="value">+0.479</div>
+    <div class="value">+0.938</div>
     <div class="sub">Entropy predicts TTA benefit (RQ3)</div>
   </div>
 </div>
@@ -259,12 +275,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr><td class="name">gaussian_noise</td><td class="cat">NOISE</td><td><span class="acc-cell" style="background:#6b1a1a">11.2%</span></td><td><span class="acc-cell" style="background:#6b1a1a">10.6%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">12.5%</span></td><td><span class="acc-cell" style="background:#6b1a1a">9.8%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">blur</td><td class="cat"></td><td><span class="acc-cell" style="background:#6b1a1a">7.7%</span></td><td><span class="acc-cell" style="background:#6b1a1a">9.1%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">10.8%</span></td><td><span class="acc-cell" style="background:#6b1a1a">7.7%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">brightness</td><td class="cat">WEATHER</td><td><span class="acc-cell" style="background:#6b1a1a">12.0%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">12.3%</span></td><td><span class="acc-cell" style="background:#6b1a1a">12.0%</span></td><td><span class="acc-cell" style="background:#6b1a1a">12.0%</span></td><td><strong>TTN</strong></td></tr>
+    <tr><td class="name">gaussian_noise</td><td class="cat">NOISE</td><td><span class="acc-cell" style="background:#6b1a1a">50.2%</span></td><td><span class="acc-cell" style="background:#5a6b1a">72.7%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">75.5%</span></td><td><span class="acc-cell" style="background:#6b1a1a">24.7%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">shot_noise</td><td class="cat">NOISE</td><td><span class="acc-cell" style="background:#5a6b1a">61.1%</span></td><td><span class="acc-cell" style="background:#5a6b1a">77.4%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">79.4%</span></td><td><span class="acc-cell" style="background:#6b1a1a">24.9%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">impulse_noise</td><td class="cat">NOISE</td><td><span class="acc-cell" style="background:#5a6b1a">63.1%</span></td><td><span class="acc-cell" style="background:#5a6b1a">75.1%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">78.1%</span></td><td><span class="acc-cell" style="background:#6b1a1a">29.5%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">defocus_blur</td><td class="cat">BLUR</td><td><span class="acc-cell" style="background:#1a6b3a">89.3%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">92.3%</span></td><td><span class="acc-cell" style="background:#1a6b3a">91.9%</span></td><td><span class="acc-cell" style="background:#1a6b3a">84.2%</span></td><td><strong>TTN</strong></td></tr><tr><td class="name">glass_blur</td><td class="cat">BLUR</td><td><span class="acc-cell" style="background:#5a6b1a">64.7%</span></td><td><span class="acc-cell" style="background:#5a6b1a">75.6%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">78.3%</span></td><td><span class="acc-cell" style="background:#6b1a1a">34.3%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">motion_blur</td><td class="cat">BLUR</td><td><span class="acc-cell" style="background:#5a6b1a">71.8%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">85.8%</span></td><td><span class="acc-cell" style="background:#1a6b3a">84.7%</span></td><td><span class="acc-cell" style="background:#6b1a1a">32.3%</span></td><td><strong>TTN</strong></td></tr><tr><td class="name">zoom_blur</td><td class="cat">BLUR</td><td><span class="acc-cell" style="background:#1a6b3a">80.2%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">89.7%</span></td><td><span class="acc-cell" style="background:#1a6b3a">88.7%</span></td><td><span class="acc-cell" style="background:#6b1a1a">38.4%</span></td><td><strong>TTN</strong></td></tr><tr><td class="name">snow</td><td class="cat">WEATHER</td><td><span class="acc-cell" style="background:#1a6b3a">81.7%</span></td><td><span class="acc-cell" style="background:#1a6b3a">84.6%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">84.9%</span></td><td><span class="acc-cell" style="background:#6b1a1a">51.2%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">frost</td><td class="cat">WEATHER</td><td><span class="acc-cell" style="background:#5a6b1a">78.5%</span></td><td><span class="acc-cell" style="background:#1a6b3a">85.6%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">85.7%</span></td><td><span class="acc-cell" style="background:#6b1a1a">46.5%</span></td><td><strong>TENT</strong></td></tr><tr><td class="name">fog</td><td class="cat">WEATHER</td><td><span class="acc-cell" style="background:#1a6b3a">89.7%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">91.9%</span></td><td><span class="acc-cell" style="background:#1a6b3a">90.9%</span></td><td><span class="acc-cell" style="background:#6b1a1a">55.1%</span></td><td><strong>TTN</strong></td></tr><tr><td class="name">brightness</td><td class="cat">WEATHER</td><td><span class="acc-cell" style="background:#1a6b3a">92.8%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">93.0%</span></td><td><span class="acc-cell" style="background:#1a6b3a">92.5%</span></td><td><span class="acc-cell" style="background:#1a6b3a">89.9%</span></td><td><strong>TTN</strong></td></tr><tr><td class="name">contrast</td><td class="cat">DIGITAL</td><td><span class="acc-cell" style="background:#1a6b3a">84.9%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">91.3%</span></td><td><span class="acc-cell" style="background:#1a6b3a">89.8%</span></td><td><span class="acc-cell" style="background:#6b1a1a">51.4%</span></td><td><strong>TTN</strong></td></tr><tr><td class="name">elastic_transform</td><td class="cat">DIGITAL</td><td><span class="acc-cell" style="background:#1a6b3a">85.2%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">89.1%</span></td><td><span class="acc-cell" style="background:#1a6b3a">88.0%</span></td><td><span class="acc-cell" style="background:#6b1a1a">41.9%</span></td><td><strong>TTN</strong></td></tr><tr><td class="name">pixelate</td><td class="cat">DIGITAL</td><td><span class="acc-cell" style="background:#1a6b3a">83.0%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">88.9%</span></td><td><span class="acc-cell" style="background:#1a6b3a">88.6%</span></td><td><span class="acc-cell" style="background:#6b1a1a">29.4%</span></td><td><strong>TTN</strong></td></tr><tr><td class="name">jpeg_compression</td><td class="cat">DIGITAL</td><td><span class="acc-cell" style="background:#1a6b3a">81.4%</span></td><td><span class="acc-cell" style="background:#1a6b3a">82.6%</span></td><td><span class="acc-cell win-cell" style="background:#1a4a6b">84.0%</span></td><td><span class="acc-cell" style="background:#6b1a1a">38.8%</span></td><td><strong>TENT</strong></td></tr>
     <tr class="mce-row">
-      <td class="name">mCE (↓ better)</td><td></td><td>0.8969</td><td>0.8932</td><td>0.8823</td><td>0.9016</td><td></td>
+      <td class="name">mCE (↓ better)</td><td></td><td>0.2284</td><td>0.1497</td><td>0.1459</td><td>0.5516</td><td></td>
     </tr>
     <tr class="mce-row">
-      <td class="name">Rel. Improvement</td><td></td><td style="color:var(--red)">+0.0%</td><td style="color:var(--green)">+0.4%</td><td style="color:var(--green)">+1.6%</td><td style="color:var(--red)">-0.5%</td><td></td>
+      <td class="name">Rel. Improvement</td><td></td><td style="color:var(--red)">+0.0%</td><td style="color:var(--green)">+34.4%</td><td style="color:var(--green)">+36.1%</td><td style="color:var(--red)">-141.5%</td><td></td>
     </tr>
   </tbody>
 </table>
@@ -282,7 +298,7 @@
       <th>Notes</th>
     </tr>
   </thead>
-  <tbody><tr><td class='name' style=''>No Adapt</td><td style=''>0.8969</td><td style='color:var(--text);'>+0.0%</td><td></td></tr><tr><td class='name' style=''>TTN</td><td style=''>0.8932</td><td style='color:var(--green);'>+0.4%</td><td></td></tr><tr><td class='name' style=' font-weight:700;'>TENT</td><td style=' font-weight:700;'>0.8823</td><td style='color:var(--green); font-weight:700;'>+1.6%</td><td>✓ Best</td></tr><tr><td class='name' style=''>Pseudo-Label</td><td style=''>0.9016</td><td style='color:var(--text);'>-0.5%</td><td></td></tr></tbody>
+  <tbody><tr><td class="name" style="">No Adapt</td><td style="">0.2284</td><td style="color:var(--text);">+0.0%</td><td></td></tr><tr><td class="name" style="">TTN</td><td style="">0.1497</td><td style="color:var(--green);">+34.4%</td><td></td></tr><tr><td class="name" style=" font-weight:700;">TENT</td><td style=" font-weight:700;">0.1459</td><td style="color:var(--green); font-weight:700;">+36.1%</td><td>✓ Best</td></tr><tr><td class="name" style="">Pseudo-Label</td><td style="">0.5516</td><td style="color:var(--text);">-141.5%</td><td></td></tr></tbody>
 </table>
 </div>
 
@@ -292,44 +308,58 @@
   <strong>Hypothesis:</strong> High pre-adaptation entropy signals a larger distribution
   shift, so TTA should help more.
   <br>
-  <strong>Result:</strong> Pearson r(H̄_pre, ΔTENT) = <strong>+0.4788</strong>
-  &nbsp;—&nbsp; Moderate correlation (r = +0.479): entropy partially predicts TTA benefit. Noise corruptions tend to have higher entropy and larger TENT gains than digital corruptions.
+  <strong>Result:</strong> Pearson r(H̄_pre, ΔTENT) = <strong>+0.9384</strong>
+  &nbsp;—&nbsp; Strong positive correlation: corruptions with higher pre-adaptation entropy benefit significantly more from TENT. This supports the entropy-as-shift-indicator hypothesis (RQ3).
 </div>
 <h3>Entropy vs. Adaptation Gain (ASCII Scatter)</h3>
-<pre>  ΔAcc↑  (y_max=+0.031)
-  +0.031 │                                                           ·
+<pre>  ΔAcc↑  (y_max=+0.253)
+  +0.253 │                                                           ·
          │                                                            
          │                                                            
+         │                                          ·                 
+         │                                                            
+         │                                                       ·    
+         │                           ·        ·                       
          │                                                            
          │                                                            
-         │                                                            
-         │                                                            
-         │                                                            
+         │                  ··                                        
+         │              ·                                             
+         │          ·                                                 
+         │      ·     ·   ·  ·                                        
+         │    ·                                                       
          │·                                                           
-         │                                                            
-         │                                                            
-         │                                                            
-         │                                                            
-         │                                                            
-         │                                    ·                       
          └────────────────────────────────────────────────────────────
-          2.275                                              2.286
+          0.107                                              0.529
           H̄_pre →                                                    </pre>
 <h3>Full Uncertainty Report</h3>
 <pre>======================================================================
 UNCERTAINTY ANALYSIS — Pre-Adaptation Entropy vs. TENT Gain (RQ3)
 ======================================================================
-Pearson r (entropy ↔ TENT adaptation gain):  +0.4788
+Pearson r (entropy ↔ TENT adaptation gain):  +0.9384
 
 Corruption                  H̄_pre     ΔAcc     Base     TENT  Uncertain%
 ----------------------------------------------------------------------
-blur                        2.2857  +0.0312   7.66%  10.78%     100.0%
-brightness                  2.2817  +0.0000  12.03%  12.03%     100.0%
-gaussian_noise              2.2751  +0.0125  11.25%  12.50%     100.0%
+gaussian_noise              0.5290  +0.2531  50.18%  75.49%      10.1%
+impulse_noise               0.5014  +0.1506  63.07%  78.13%       9.5%
+shot_noise                  0.4144  +0.1824  61.14%  79.38%       6.8%
+glass_blur                  0.3711  +0.1362  64.67%  78.29%       5.3%
+motion_blur                 0.3045  +0.1295  71.77%  84.72%       4.4%
+frost                       0.2480  +0.0723  78.51%  85.74%       3.2%
+jpeg_compression            0.2456  +0.0260  81.41%  84.01%       3.6%
+zoom_blur                   0.2409  +0.0845  80.21%  88.66%       3.1%
+snow                        0.2261  +0.0328  81.66%  84.94%       2.7%
+pixelate                    0.2078  +0.0565  82.98%  88.63%       2.7%
+elastic_transform           0.1974  +0.0281  85.19%  88.00%       2.1%
+contrast                    0.1808  +0.0494  84.90%  89.84%       2.0%
+defocus_blur                0.1509  +0.0265  89.26%  91.91%       1.6%
+fog                         0.1368  +0.0126  89.67%  90.93%       1.4%
+brightness                  0.1069  -0.0027  92.77%  92.50%       0.9%
 
 Interpretation:
-  r = +0.4788 → Moderate positive correlation.
-  Entropy partially predicts TENT benefit across corruption types.</pre>
+  r = +0.9384 → Strong positive correlation.
+  Corruptions with higher pre-adaptation entropy benefit more from TENT.
+  This supports RQ3: entropy predicts which corruptions benefit from TTA.
+  Expected: noise corruptions (high entropy) &gt; digital (low entropy).</pre>
 
 
 <h2>Winner per Corruption Type</h2>
@@ -343,10 +373,44 @@ Interpretation:
       <th>Accuracy</th>
     </tr>
   </thead>
-  <tbody><tr><td class='name'>gaussian_noise</td><td class='cat'>NOISE</td><td><strong>TENT</strong></td><td>12.5%</td></tr><tr><td class='name'>blur</td><td class='cat'></td><td><strong>TENT</strong></td><td>10.8%</td></tr><tr><td class='name'>brightness</td><td class='cat'>WEATHER</td><td><strong>TTN</strong></td><td>12.3%</td></tr></tbody>
+  <tbody><tr><td class="name">gaussian_noise</td><td class="cat">NOISE</td><td><strong>TENT</strong></td><td>75.5%</td></tr><tr><td class="name">shot_noise</td><td class="cat">NOISE</td><td><strong>TENT</strong></td><td>79.4%</td></tr><tr><td class="name">impulse_noise</td><td class="cat">NOISE</td><td><strong>TENT</strong></td><td>78.1%</td></tr><tr><td class="name">defocus_blur</td><td class="cat">BLUR</td><td><strong>TTN</strong></td><td>92.3%</td></tr><tr><td class="name">glass_blur</td><td class="cat">BLUR</td><td><strong>TENT</strong></td><td>78.3%</td></tr><tr><td class="name">motion_blur</td><td class="cat">BLUR</td><td><strong>TTN</strong></td><td>85.8%</td></tr><tr><td class="name">zoom_blur</td><td class="cat">BLUR</td><td><strong>TTN</strong></td><td>89.7%</td></tr><tr><td class="name">snow</td><td class="cat">WEATHER</td><td><strong>TENT</strong></td><td>84.9%</td></tr><tr><td class="name">frost</td><td class="cat">WEATHER</td><td><strong>TENT</strong></td><td>85.7%</td></tr><tr><td class="name">fog</td><td class="cat">WEATHER</td><td><strong>TTN</strong></td><td>91.9%</td></tr><tr><td class="name">brightness</td><td class="cat">WEATHER</td><td><strong>TTN</strong></td><td>93.0%</td></tr><tr><td class="name">contrast</td><td class="cat">DIGITAL</td><td><strong>TTN</strong></td><td>91.3%</td></tr><tr><td class="name">elastic_transform</td><td class="cat">DIGITAL</td><td><strong>TTN</strong></td><td>89.1%</td></tr><tr><td class="name">pixelate</td><td class="cat">DIGITAL</td><td><strong>TTN</strong></td><td>88.9%</td></tr><tr><td class="name">jpeg_compression</td><td class="cat">DIGITAL</td><td><strong>TENT</strong></td><td>84.0%</td></tr></tbody>
 </table>
 </div>
 
+
+<div class="finding">
+  <h3>⚠ Counter-Intuitive Finding: Pseudo-Label Fails on Blur Corruptions</h3>
+  <p>
+    Pseudo-label adaptation <strong>degrades</strong> accuracy below the
+    no-adaptation baseline on the following blur corruption types.
+  </p>
+  <div class="table-wrap" style="margin:0.75rem 0">
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Corruption</th>
+        <th>Baseline Acc</th>
+        <th>PL Acc</th>
+        <th>Δ (degradation)</th>
+      </tr>
+    </thead>
+    <tbody><tr><td class="name">defocus_blur</td><td>89.3%</td><td style="color:var(--red)">84.2%</td><td style="color:var(--red);font-weight:700">-5.1%</td></tr><tr><td class="name">glass_blur</td><td>64.7%</td><td style="color:var(--red)">34.3%</td><td style="color:var(--red);font-weight:700">-30.4%</td></tr><tr><td class="name">motion_blur</td><td>71.8%</td><td style="color:var(--red)">32.3%</td><td style="color:var(--red);font-weight:700">-39.5%</td></tr><tr><td class="name">zoom_blur</td><td>80.2%</td><td style="color:var(--red)">38.4%</td><td style="color:var(--red);font-weight:700">-41.8%</td></tr></tbody>
+  </table>
+  </div>
+  <p>
+    <strong>Root cause — Confirmation Bias:</strong>
+    Blur corruptions cause the model to assign <em>high confidence to wrong predictions</em>
+    (e.g., a blurred cat image is classified as "dog" with 97% confidence).
+    These pass the 0.9 confidence threshold and are treated as ground-truth pseudo-labels.
+    The model then fine-tunes on these incorrect labels, reinforcing the errors.
+    This phenomenon is called <em>confirmation bias</em> in self-training literature.
+  </p>
+  <p>
+    <strong>In contrast:</strong> Noise corruptions tend to produce uncertain predictions
+    (low max-prob, high entropy), which are more likely to be rejected by the threshold
+    or to be genuinely correct when accepted.
+  </p>
+</div>
 
 
 <h2>Research Questions</h2>
@@ -359,11 +423,11 @@ Interpretation:
   </p>
   <p style="margin-top:0.75rem">
     <strong>RQ2 — Does TENT outperform TTN across different severities?</strong><br>
-    Yes — TENT mCE (0.8823) &lt; TTN mCE (0.8932): entropy minimisation outperforms stat-only adaptation.
+    Yes — TENT mCE (0.1459) &lt; TTN mCE (0.1497): entropy minimisation outperforms stat-only adaptation.
   </p>
   <p style="margin-top:0.75rem">
     <strong>RQ3 — Can pre-adaptation entropy predict which corruptions benefit most from TTA?</strong><br>
-    r = +0.4788. Moderate support.
+    r = +0.9384. Strong support for the hypothesis.
   </p>
 </div>
 
@@ -384,5 +448,324 @@ Interpretation:
   </p>
 </footer>
 
-</body>
-</html>
+
+<div id="give-freely-root-kkkbiiikppgjdiebcabomlbidfodipjg" class="give-freely-root" data-extension-id="kkkbiiikppgjdiebcabomlbidfodipjg" data-extension-name="Substital: Add subtitles to videos and movies" style="display: block;"><template shadowrootmode="open"><style>
+  :host {
+    all: initial;
+  }
+
+  .gf-scroll-remove::-webkit-scrollbar {
+    border-radius-bottom-right: 15px;
+  }
+
+  button {
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+
+  .give-freely-close-button:hover {
+    opacity: 0.7;
+  }
+
+  input[type="radio"] {
+    margin-right: 8px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 1em 0;
+  }
+
+  @media (max-width: 600px), (max-height: 480px) {
+    #give-freely-checkout-popup {
+      display: none !important;
+    }
+  }
+
+  dialog::backdrop  {
+    background-color: rgba(180, 180, 180, 0.8);
+  }
+
+  dialog.backdrop-hidden::backdrop  {
+    background-color: transparent;
+  }
+</style><div><div class="gf-app"></div></div></template></div><div id="screenity-ui"><div></div><div class="screenity-shadow-dom"><div><div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; pointer-events: none; z-index: 2147483647;" class="mytechpassport-scrollbar"><style class="mytechpassport-scrollbar">
+          .qa-toolbar {
+            position: fixed !important;
+            z-index: 2147483647 !important;
+          }
+
+        .qa-toolbar.dragging {
+          cursor: grabbing !important;
+        }
+
+        .qa-toolbar .drag-handle {
+          cursor: grab;
+          position: relative;
+          z-index: 2147483647;
+        }
+
+        .qa-toolbar.dragging .drag-handle {
+          cursor: grabbing;
+        }
+        </style></div><div class="mytechpassport-scrollbar"></div><div class="mytechpassport-scrollbar"></div></div><style type="text/css">
+			#screenity-ui, #screenity-ui div {
+				background-color: unset;
+				padding: unset;
+				width: unset;
+				box-shadow: unset;
+				display: unset;
+				margin: unset;
+				border-radius: unset;
+			}
+			.screenity-outline {
+				position: absolute;
+				z-index: 99999999999;
+				border: 2px solid #000000;
+				outline-offset: -2px;
+				pointer-events: none;
+				border-radius: 5px!important;
+			}
+		.screenity-blur {
+			filter: blur(10px)!important;
+		}
+			.screenity-shadow-dom * {
+				transition: unset;
+			}
+			.screenity-shadow-dom .TooltipContent {
+  border-radius: 30px!important;
+	background-color: #29292F!important;
+  padding: 10px 15px!important;
+  font-size: 12px;
+	margin-bottom: 10px!important;
+	bottom: 100px;
+  line-height: 1;
+	font-family: 'Satoshi-Medium', sans-serif;
+	z-index: 99999999!important;
+  color: #FFF;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px!important;
+  user-select: none;
+	transition: opacity 0.3 ease-in-out;
+  will-change: transform, opacity;
+	animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.screenity-shadow-dom .hide-tooltip {
+	display: none!important;
+}
+
+.screenity-shadow-dom .tooltip-tall {
+	margin-bottom: 20px;
+}
+
+.screenity-shadow-dom .tooltip-small {
+	margin-bottom: 5px;
+}
+
+.screenity-shadow-dom .TooltipContent[data-state='delayed-open'][data-side='top'] {
+	animation-name: slideDownAndFade;
+}
+.screenity-shadow-dom .TooltipContent[data-state='delayed-open'][data-side='right'] {
+  animation-name: slideLeftAndFade;
+}
+.screenity-shadow-dom.TooltipContent[data-state='delayed-open'][data-side='bottom'] {
+  animation-name: slideUpAndFade;
+}
+.screenity-shadow-dom.TooltipContent[data-state='delayed-open'][data-side='left'] {
+  animation-name: slideRightAndFade;
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#screenity-ui [data-radix-popper-content-wrapper] { z-index: 999999999999!important; } 
+
+.screenity-shadow-dom .CanvasContainer {
+	position: fixed;
+	pointer-events: all!important;
+	top: 0px!important;
+	left: 0px!important;
+	z-index: 99999999999!important;
+}
+.screenity-shadow-dom .canvas {
+	position: fixed;
+	top: 0px!important;
+	left: 0px!important;
+	z-index: 99999999999!important;
+	background: transparent!important;
+}
+
+
+.ScreenityDropdownMenuContent {
+	z-index: 99999999999!important;
+  min-width: 200px;
+  background-color: white;
+  margin-top: 4px;
+  margin-right: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 15px;
+  z-index: 99999;
+  font-family: 'Satoshi-Medium', sans-serif;
+  color: #29292F;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+.ScreenityDropdownMenuContent[data-side="top"] {
+  animation-name: slideDownAndFade;
+}
+.ScreenityDropdownMenuContent[data-side="right"] {
+  animation-name: slideLeftAndFade;
+}
+.ScreenityDropdownMenuContent[data-side="bottom"] {
+  animation-name: slideUpAndFade;
+}
+.ScreenityDropdownMenuContent[data-side="left"] {
+  animation-name: slideRightAndFade;
+}
+.ScreenityItemIndicator {
+  position: absolute;
+  right: 12px; 
+  width: 18px;
+  height: 18px;
+  background: #3080F8;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ScreenityDropdownMenuItem,
+.ScreenityDropdownMenuRadioItem {
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 5px;
+  position: relative;
+  padding-left: 22px;
+  padding-right: 22px;
+  user-select: none;
+  outline: none;
+}
+.ScreenityDropdownMenuItem:hover {
+    background-color: #F6F7FB !important;
+    cursor: pointer;
+}
+.ScreenityDropdownMenuItem[data-disabled] {
+  color: #6E7684; !important;
+  cursor: not-allowed;
+  background-color: #F6F7FB !important;
+}
+
+
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+</style></div></div><script>(() => {
+        window.addoncropExtensions = window.addoncropExtensions || [];
+        window.addoncropExtensions.push({
+            mode: 'emulator',
+            emulator: 'CRXEmulator',
+            extension: {
+                id: 44,
+                name: 'YouTube Downloader by Addoncrop',
+                version: '17.9.1',
+                date: 'June 2, 2023',
+            },
+            flixmateConnected: false,
+        });
+    })();</script><script id="xh-injected-script" src="chrome-extension://llkcpjgllfpfbcddhgbpnpppjbefkcpe/assets/window.js" type="module"></script></body><div><template shadowrootmode="open"><ce-root data-v-app=""><div data-v-a0504a81="" class="cv-toast-target" data-position="top-center"></div></ce-root></template></div></html>
