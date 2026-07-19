@@ -157,6 +157,14 @@ def download_cifar10c():
     The dataset is ~300 MB compressed, ~800 MB extracted.
     Contains 15 .npy files (one per corruption type) + labels.npy.
     """
+    # Auto-detect if attached as a Kaggle Input Dataset
+    if IS_KAGGLE and os.path.exists("/kaggle/input"):
+        for root, dirs, files in os.walk("/kaggle/input"):
+            if "labels.npy" in files and any(f.endswith(".npy") and f != "labels.npy" for f in files):
+                logger.info("Found CIFAR-10-C in Kaggle input: %s. Skipping download.", root)
+                Config.CIFAR10C_DIR = root
+                return True
+
     if os.path.isdir(Config.CIFAR10C_DIR):
         npy_count = len([
             f for f in os.listdir(Config.CIFAR10C_DIR)
