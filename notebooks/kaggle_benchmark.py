@@ -177,21 +177,33 @@ def download_cifar10c():
             )
             return True
 
-    logger.info("Downloading CIFAR-10-C from Zenodo (~300 MB)...")
-    url = "https://zenodo.org/record/2535967/files/CIFAR-10-C.tar"
+    logger.info("Preparing CIFAR-10-C...")
     tar_path = "./CIFAR-10-C.tar"
+    needs_download = True
 
-    try:
-        # Try wget first (usually available on Linux/Kaggle)
-        subprocess.run(
-            ["wget", "-q", "--show-progress", url, "-O", tar_path],
-            check=True,
-        )
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        # Fallback to Python download
-        logger.info("wget not available, using Python urllib...")
-        import urllib.request
-        urllib.request.urlretrieve(url, tar_path)
+    # Check if a raw .tar file is attached in Kaggle inputs
+    if IS_KAGGLE and os.path.exists("/kaggle/input"):
+        for root, dirs, files in os.walk("/kaggle/input"):
+            if "CIFAR-10-C.tar" in files:
+                tar_path = os.path.join(root, "CIFAR-10-C.tar")
+                logger.info("Found attached CIFAR-10-C.tar at %s. Skipping download.", tar_path)
+                needs_download = False
+                break
+
+    if needs_download:
+        logger.info("Downloading CIFAR-10-C from Zenodo (~300 MB)...")
+        url = "https://zenodo.org/record/2535967/files/CIFAR-10-C.tar"
+        try:
+            # Try wget first (usually available on Linux/Kaggle)
+            subprocess.run(
+                ["wget", "-q", "--show-progress", url, "-O", tar_path],
+                check=True,
+            )
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            # Fallback to Python download
+            logger.info("wget not available, using Python urllib...")
+            import urllib.request
+            urllib.request.urlretrieve(url, tar_path)
 
     logger.info("Extracting CIFAR-10-C.tar...")
     import tarfile
