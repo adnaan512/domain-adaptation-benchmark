@@ -64,6 +64,25 @@ CORRUPTION_TYPES: List[str] = [
 MOCK_CORRUPTION_TYPES = ["gaussian_noise", "blur", "brightness"]
 
 
+def _normalize_tensor(images: torch.Tensor) -> torch.Tensor:
+    """
+    Normalize a batch of CIFAR-10 images with channel-wise mean/std.
+
+    Parameters
+    ----------
+    images : torch.Tensor
+        Shape (N, 3, 32, 32), float32 in [0, 1].
+
+    Returns
+    -------
+    torch.Tensor
+        Normalized images.
+    """
+    mean = torch.tensor(CIFAR10_MEAN).view(1, 3, 1, 1)
+    std = torch.tensor(CIFAR10_STD).view(1, 3, 1, 1)
+    return (images - mean) / std
+
+
 # ---------------------------------------------------------------------------
 # Clean CIFAR-10
 # ---------------------------------------------------------------------------
@@ -261,6 +280,141 @@ class CIFAR10CLoader:
         start = (severity - 1) * SAMPLES_PER_SEVERITY
         end   = severity * SAMPLES_PER_SEVERITY
         return self._labels[start:end]  # (10000,)
+
+
+# ---------------------------------------------------------------------------
+# Kaggle CIFAR-10 loader (Python pickle batch format)
+# ---------------------------------------------------------------------------
+
+
+class KaggleCIFAR10Loader:
+    """
+    Load CIFAR-10 from the standard Kaggle Python pickle format.
+
+    The Kaggle CIFAR-10 dataset (``cifar-10-python``) distributes the data
+    as Python pickle files identical to the original format from
+    cs.toronto.edu::
+
+        cifar-10-batches-py/
+            data_batch_1       (10 000 images each)
+            data_batch_2
+            data_batch_3
+            data_batch_4
+            data_batch_5
+            test_batch
+            batches.meta
+
+    This loader reads those files and returns DataLoaders compatible with
+    the benchmark pipeline.
+
+    Parameters
+    ----------
+    data_dir : str
+        Directory containing the ``cifar-10-batches-py/`` folder,
+        or the folder itself.
+    batch_size : int
+        Mini-batch size for the returned DataLoaders.
+
+    Example
+    -------
+    ::
+
+        loader = KaggleCIFAR10Loader("./cifar-10-python")
+        train_dl, test_dl = loader.get_loaders()
+    """
+
+    def __init__(self, data_dir: str, batch_size: int = 128) -> None:
+        self.data_dir   = data_dir
+        self.batch_size = batch_size
+        # Auto-detect nested folder
+        nested = os.path.join(data_dir, "cifar-10-batches-py")
+        if os.path.isdir(nested):
+            self._root = nested
+        else:
+            self._root = data_dir
+
+    def _unpickle(self, filepath: str) -> dict:
+        """Read a single CIFAR-10 batch file."""
+        import pickle
+        with open(filepath, "rb") as f:
+            batch = pickle.load(f, encoding="bytes")
+        return batch
+
+    def _load_batch(self, filepath: str):
+        """Load images and labels from one pickle batch file."""
+        batch  = self._unpickle(filepath)
+        images = batch[b"data"]                  # (N, 3072) uint8
+        labels = batch.get(b"labels", batch.get(b"fine_labels", []))
+        images = images.reshape(-1, 3, 32, 32)   # (N, 3, 32, 32)
+        return images, np.array(labels)
+
+    def get_loaders(self) -> Tuple[DataLoader, DataLoader]:
+        """
+        Return (train_loader, test_loader) from Kaggle CIFAR-10 pickles.
+
+        The images are normalised with CIFAR-10 statistics.
+
+        Returns
+        -------
+        Tuple[DataLoader, DataLoader]
+            Train and test DataLoaders.
+        """
+        # Load training batches
+        all_images = []
+        all_labels = []
+        for i in range(1, 6):
+            path = os.path.join(self._root, f"data_batch_{i}")
+            if os.path.exists(path):
+                imgs, lbls = self._load_batch(path)
+                all_images.append(imgs)
+                all_labels.append(lbls)
+
+        if not all_images:
+            raise FileNotFoundError(
+                f"No CIFAR-10 batch files found in {self._root}. "
+                "Expected files named data_batch_1 ... data_batch_5."
+            )
+
+        train_images = np.concatenate(all_images, axis=0)
+        train_labels = np.concatenate(all_labels, axis=0)
+
+        # Load test batch
+        test_path = os.path.join(self._root, "test_batch")
+        if os.path.exists(test_path):
+            test_images, test_labels = self._load_batch(test_path)
+        else:
+            raise FileNotFoundError(
+                f"Test batch not found at {test_path}."
+            )
+
+        # Convert to tensors and normalise
+        train_t = _normalize_tensor(
+            torch.from_numpy(train_images).float().div_(255.0)
+        )
+        test_t = _normalize_tensor(
+            torch.from_numpy(test_images).float().div_(255.0)
+        )
+        train_l = torch.from_numpy(train_labels).long()
+        test_l = torch.from_numpy(test_labels).long()
+
+        train_loader = DataLoader(
+            TensorDataset(train_t, train_l),
+            batch_size=self.batch_size,
+            shuffle=True,
+            num_workers=0,
+        )
+        test_loader = DataLoader(
+            TensorDataset(test_t, test_l),
+            batch_size=self.batch_size,
+            shuffle=False,
+            num_workers=0,
+        )
+
+        logger.info(
+            "KaggleCIFAR10Loader: %d train, %d test samples loaded.",
+            len(train_labels), len(test_labels),
+        )
+        return train_loader, test_loader
 
 
 # ---------------------------------------------------------------------------
